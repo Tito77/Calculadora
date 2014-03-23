@@ -5,3 +5,5 @@
 *.war
 *.ear
 /Calculadora/nbproject/private/
+/Calculadora/build/
+/Calculadora/dist/
