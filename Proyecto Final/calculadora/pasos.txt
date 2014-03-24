@@ -1,0 +1,39 @@
+1-escribir código java
+2-Click en Run y luego en Build Main Project
+3-en el cmd-> javah -o Caluculadora.h -classpath "C:\Users\pc\Documents\NetBeansProjects\Calculadora\build\classes" calculadora.Calculadora calculadora.Operaciones
+4-Se creara un Calculadora.h, abrilo y copiar el código jni nada más, en un achivo
+5-Copiar los archivo .java del proyecto en el misma carpeta del archivo.h
+6-crear un archivo para Win 32 Console Aplication, tipo dinamic Library (DLL) para C en Visual estudio o en Netbeans
+7-el archivo C ir a propiedades del proyecto y agregar en la parte C/C++
+	luego en General-> en Additional Include Directorios:
+		C:\Program Files\Java\jdk1.6.0_20\include 
+		C:\Program Files\Java\jdk1.6.0_20\include\win32
+		Agregar también el directorio donde se encuentre Calculadora.h
+
+8-Con el código del paso 3,copiarlo en el archivo C y modificarlo para sus necesidades
+9-Compilar el archivo DLL en Visual Studio, click en Build y luego Build <Nombre_del_Proyecto>
+10-Copiar el archivo nuevo .dll. Para encontralo dar click derecho al proyecto en solution y luego precionar Open Folder in Windows Explorer
+	Al copiar el .dll pegarlo en la carpeta donde esta los .java
+	PD: el .dll esta cerca de esta direccion \Visual Studio 2010\Projects\Operaciones\x64\Debug
+
+11-en la consola escribir-> java -classpath "C:\Users\pc\Documents\NetBeansProjects\Calculadora\build\classes" calculadora.Calculadora calculadora.Operaciones
+
+
+
+PD: si sale este error en Visual Studio la solución es->
+		LINK : fatal error LNK1123: failure during conversion to COFF: file invalid or corrupt
+	Solución:To summarize:
+
+		Either disable incremental linking, by going to
+
+		1@ Project Properties 
+   			-> Configuration Properties 
+     			  -> Linker (General) 
+			     -> Enable Incremental Linking -> "No (/INCREMENTAL:NO)"
+		2@ or install VS2010 SP1.
+
+Linl de referencia en orden de prioridad:
+1-http://cs.mty.itesm.mx/profesores/raul.perez/DADI/GuiaJNI2.pdf
+2-https://netbeans.org/kb/docs/cnd/beginning-jni-linux.html
+3-http://profesores.elo.utfsm.cl/~agv/elo330/2s10/lectures/JNI/jni.html
+4-https://sites.google.com/site/alejandrodemaria/java-y-c
